@@ -1,60 +1,160 @@
-body {
-  font-family: "Lato", sans-serif;
+/* C:\xampp\htdocs\pwl07018\pwlxxxxx\css\styleku.css */
+:root {
+  --primary-color: #0d6efd;
+  --sidebar-width: 220px;
+  --transition-speed: 0.3s;
 }
 
-.form-control-ku {
-  display: inline;
-  padding: 0.375rem 0.75rem;
+/* Base Styles */
+body {
+  font-family: "Lato", sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+  line-height: 1.6;
+}
+
+/* Form Styles */
+.form-control, .form-control-ku {
+  display: block;
+  width: 100%;
+  padding: 0.475rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  color: #5708f4;
+  color: #212529;
   background-color: #fff;
   background-clip: padding-box;
   border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  border-radius: 0.375rem;
+  transition: border-color var(--transition-speed) ease-in-out, 
+              box-shadow var(--transition-speed) ease-in-out;
 }
 
+.form-control:focus, .form-control-ku:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #86b7fe;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* Sidebar Styles */
 .menusamping {
-  height: 100%;
-  width: 160px;
+  height: 100vh;
+  width: var(--sidebar-width);
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   top: 0;
   left: 0;
-  background-color:blue;
+  background-color: var(--primary-color);
   overflow-x: hidden;
-  padding-top: 20px;
+  padding-top: 1rem;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: width var(--transition-speed);
+}
+
+.menusamping h1 {
+  padding: 1rem;
+  margin: 0 0 1rem 0;
+  font-size: 1.25rem;
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(0, 0, 0, 0.1);
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .menusamping a {
-  padding: 6px 8px 6px 16px;
+  padding: 0.75rem 1rem;
+  margin: 0.25rem 1rem;
   text-decoration: none;
-  font-size: 14px;
-  color: #ccc;
-  display: block;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  border-radius: 0.25rem;
+  transition: all var(--transition-speed);
 }
-.menusamping h1 {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 16px;  
-  color: #818181;
-  background-color:#eee;
-  display: block;
+
+.menusamping a i {
+  margin-right: 0.75rem;
+  font-size: 1.1rem;
 }
 
 .menusamping a:hover {
   color: #fff;
-  background-color:#999;
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateX(5px);
 }
 
+/* Main Content Area */
 .utama {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  font-size: 14px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
+  margin-left: var(--sidebar-width);
+  padding: 1.5rem;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  transition: margin-left var(--transition-speed);
+}
+
+/* Cards */
+.card {
+  border: none;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  margin-bottom: 1.5rem;
+}
+
+.card-header {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-weight: 600;
+  padding: 1rem 1.25rem;
+}
+
+/* Buttons */
+.btn {
+  border-radius: 0.375rem;
+  padding: 0.475rem 1rem;
+  font-weight: 500;
+  transition: all var(--transition-speed);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: #0b5ed7;
+  border-color: #0a58ca;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 992px) {
+  .menusamping {
+    width: 80px;
+  }
+  .menusamping h1,
+  .menusamping a span {
+    display: none;
+  }
+  .menusamping a {
+    justify-content: center;
+    margin: 0.25rem 0.5rem;
+  }
+  .menusamping a i {
+    margin-right: 0;
+    font-size: 1.25rem;
+  }
+  .utama {
+    margin-left: 80px;
+  }
 }
 
 @media screen and (max-height: 450px) {
-  .menusamping {padding-top: 15px;}
-  .menusamping a {font-size: 12px;}
+  .menusamping {
+    padding-top: 0.5rem;
+  }
+  .menusamping a {
+    padding: 0.5rem;
+    font-size: 0.8rem;
+  }
 }
